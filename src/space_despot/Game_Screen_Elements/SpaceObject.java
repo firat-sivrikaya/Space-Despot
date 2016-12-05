@@ -1,4 +1,4 @@
-package com.spacedespot.model;
+package space_despot.Game_Screen_Elements;
 
 import java.awt.Image;
 

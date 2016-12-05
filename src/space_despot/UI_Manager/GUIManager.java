@@ -1,9 +1,8 @@
-package com.spacedespot.view.main;
+package space_despot.UI_Manager;
 
 import java.awt.*;
 import javax.swing.*;
 
-import com.spacedespot.view.game.PlayGameScreen;
 
 public class GUIManager {
 

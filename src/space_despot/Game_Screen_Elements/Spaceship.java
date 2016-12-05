@@ -1,8 +1,9 @@
-package com.spacedespot.model;
+package space_despot.Game_Screen_Elements;
 
 import javax.swing.ImageIcon;
 
-import com.spacedespot.commons.constants.Constants;
+import space_despot.Constants.*;
+
 
 
 public class Spaceship extends SpaceObject {

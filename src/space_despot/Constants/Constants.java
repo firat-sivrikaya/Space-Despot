@@ -1,4 +1,4 @@
-package com.spacedespot.commons.constants;
+package space_despot.Constants;
 
 public interface Constants {
 

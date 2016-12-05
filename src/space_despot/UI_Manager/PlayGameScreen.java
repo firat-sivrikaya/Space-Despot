@@ -1,4 +1,4 @@
-package com.spacedespot.view.game;
+package space_despot.UI_Manager;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,8 +7,9 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import com.spacedespot.commons.constants.Constants;
-import com.spacedespot.model.Spaceship;
+import space_despot.Constants.Constants;
+
+import space_despot.Game_Screen_Elements.*;
 
 @SuppressWarnings("serial")
 public class PlayGameScreen extends JPanel {
