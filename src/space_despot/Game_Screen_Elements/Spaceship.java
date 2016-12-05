@@ -9,8 +9,7 @@ import space_despot.Constants.*;
 public class Spaceship extends SpaceObject {
 
 	// CONSTANTS
-    private final ImageIcon FIGHTER_ICON = new ImageIcon(
-			this.getClass().getResource("/resources/image/fighter.png"));
+    private final ImageIcon FIGHTER_ICON = new ImageIcon("resources/image/fighter.png");
     	
     // PROPERTIES
     
