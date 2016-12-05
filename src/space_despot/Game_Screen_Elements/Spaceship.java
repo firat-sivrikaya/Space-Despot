@@ -10,7 +10,7 @@ public class Spaceship extends SpaceObject {
 
 	// CONSTANTS
     private final ImageIcon FIGHTER_ICON = new ImageIcon(
-			this.getClass().getResource("/images/fighter.png"));
+			this.getClass().getResource("/resources/image/fighter.png"));
     	
     // PROPERTIES
     
