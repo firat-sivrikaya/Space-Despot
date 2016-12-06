@@ -4,7 +4,7 @@ import java.awt.Image;
 
 public abstract class SpaceObject {
 	
-	// PROPERTIES
+	// Properties
     protected Image image;
     protected int x; // x coordinate
     protected int y; // y coordinate
@@ -13,12 +13,12 @@ public abstract class SpaceObject {
     protected int velocityX;
     protected int velocityY;
 	
-	// CONSTRUCTOR
+	// Constructor
 	public SpaceObject() {
 		super();
 	}
 	
-	// GETTERS AND SETTERS
+	// Methods
 	public Image getImage() {
 		return image;
 	}
@@ -73,5 +73,10 @@ public abstract class SpaceObject {
 
 	public void setVelocityY(int velocityY) {
 		this.velocityY = velocityY;
+	}
+	
+	public void move()
+	{
+		// to be implemented
 	}
 }
