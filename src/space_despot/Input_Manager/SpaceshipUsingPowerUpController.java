@@ -1,5 +1,6 @@
 package space_despot.Input_Manager;
 
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -59,5 +60,32 @@ public class SpaceshipUsingPowerUpController {
 			}
 			
 		} 
+=======
+import java.awt.event.KeyEvent;
+
+
+public class SpaceshipUsingPowerUpController 
+{
+	private int powerUpKey;
+	
+	public SpaceshipUsingPowerUpController()
+	{
+		initUsingPowerUpKeyBindings();
+	}
+	
+	public void initUsingPowerUpKeyBindings()
+	{
+		this.powerUpKey = KeyEvent.VK_SPACE;
+	}
+	
+	public int getPowerUpKey()
+	{
+		return powerUpKey;
+	}
+	
+	public void setPowerUpKey(int key)
+	{
+		this.powerUpKey = key;
+>>>>>>> origin/master
 	}
 }

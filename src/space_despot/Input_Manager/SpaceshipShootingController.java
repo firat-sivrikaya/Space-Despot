@@ -1,5 +1,6 @@
 package space_despot.Input_Manager;
 
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -78,4 +79,32 @@ public class SpaceshipShootingController {
 				spaceship.refillBullet();
 		}
     }
+=======
+import java.awt.event.KeyEvent;
+
+
+public class SpaceshipShootingController 
+{
+	private int shootKey;
+	
+	public SpaceshipShootingController()
+	{
+		initShootingKeyBindings();
+	}
+	
+	public void initShootingKeyBindings()
+	{
+		this.shootKey = KeyEvent.VK_X;
+	}
+	
+	public int getShootingKey()
+	{
+		return shootKey;
+	}
+	
+	public void setShootingKey(int key)
+	{
+		this.shootKey = key;
+	}
+>>>>>>> origin/master
 }

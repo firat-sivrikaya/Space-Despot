@@ -30,7 +30,7 @@ public class Boss extends SpaceMob {
 		velocityX = level * Constants.BOSS_VELOCITY;
 		velocityY = level * Constants.BOSS_VELOCITY;
 		x = Constants.SPACE_WIDTH / 2 - width / 2; // initially at middle
-		y = 0; // initially at top
+		y = 0; // initially at top.
 		hasCoin = false;
 		hasPowerUp = false;
 		isGoingLeft = false;

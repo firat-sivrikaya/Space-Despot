@@ -1,5 +1,6 @@
 package space_despot.Input_Manager;
 
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -52,5 +53,30 @@ public class PauseGameController {
 					pauseDelegate.resumeGame();
 				}	
 			}
+=======
+import java.awt.event.KeyEvent;
+
+public class PauseGameController 
+{
+	private int pauseButton;
+	
+	public PauseGameController()
+	{
+		initPauseGameKeyBindings();
+	}
+	public void initPauseGameKeyBindings()
+	{
+		this.pauseButton = KeyEvent.VK_ESCAPE;
+	}
+	
+	public int getPauseKey()
+	{
+		return pauseButton;
+	}
+	
+	public void setPauseKey(int key)
+	{
+		this.pauseButton = key;
+>>>>>>> origin/master
 	}
 }
