@@ -193,7 +193,6 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
         int yPos = yOffset;
         while ( yPos > 0 )
         {
-        	System.out.println("up");
         	yPos -= movingBackgroundImage.getHeight();
         	g.drawImage(movingBackgroundImage, 0, yPos, this);
         }
@@ -201,7 +200,6 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
         yPos = yOffset;
         while( yPos < movingBackgroundImage.getHeight() )
         {
-        	System.out.println("down");
         	g.drawImage(movingBackgroundImage, 0, yPos, this);
         	yPos += movingBackgroundImage.getHeight();
         }
