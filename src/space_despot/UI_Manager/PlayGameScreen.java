@@ -267,7 +267,6 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
 		
 		// stop game music, start menu music
 		musicManager.stopGameBackgroundMusic();
-		musicManager.startMenuBackgroundMusic();
 	}
 	
 	@Override
