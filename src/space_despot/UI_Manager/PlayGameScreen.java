@@ -3,6 +3,7 @@ package space_despot.UI_Manager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -46,6 +47,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     // PROPERTIES
 	private JPanel contentPane;
 	private BufferedImage backgroundImage;
+	private BufferedImage movingBackgroundImage;
 	private MusicManager musicManager;
 	
 	private int gameLevel;
@@ -66,6 +68,10 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     
     private JPanel inGamePanel;
     
+    // Properties of moving background
+    private int yOffset;
+    private int movingBackgroundY;
+    
     // CONSTRUCTOR  
     public PlayGameScreen(JPanel contentPane) {
     	super();  	
@@ -73,11 +79,15 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     	
     	try {
 			backgroundImage = ImageIO.read(new File("resources/images/bg.png"));
+			movingBackgroundImage = ImageIO.read(new File("resources/images/bg_moving.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     	
+    	// Set the coordinates of moving background
+        movingBackgroundY = 0;
+    	yOffset = 0;
 		// on create, before game starts, we are in the main menu
     	musicManager = new MusicManager();
 		musicManager.startMenuBackgroundMusic();
@@ -150,6 +160,8 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     	CardLayout cardLayout = (CardLayout) inGamePanel.getLayout();
 		cardLayout.show(inGamePanel, "Choose Spaceship Type Panel"); 
 		
+		
+		
 
     }	
     
@@ -164,12 +176,35 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     	musicManager.stopMenuBackgroundMusic();
     	musicManager.startGameBackgroundMusic();
     }
-    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
         g.drawImage(backgroundImage, 0, 0, this);
+        g.drawImage(movingBackgroundImage, 0, movingBackgroundY, null);
+        
+        int yDelta = 4;
+        
+        yOffset += yDelta;
+        if(yOffset > movingBackgroundImage.getHeight() )
+        {
+        	yOffset = 0;
+        }
+        int yPos = yOffset;
+        while ( yPos > 0 )
+        {
+        	System.out.println("up");
+        	yPos -= movingBackgroundImage.getHeight();
+        	g.drawImage(movingBackgroundImage, 0, yPos, this);
+        }
+        
+        yPos = yOffset;
+        while( yPos < movingBackgroundImage.getHeight() )
+        {
+        	System.out.println("down");
+        	g.drawImage(movingBackgroundImage, 0, yPos, this);
+        	yPos += movingBackgroundImage.getHeight();
+        }
         
         DrawObjectsService drawObjectsService = new DrawObjectsService(g, this, spaceship, 
     		   spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace, this);
@@ -208,7 +243,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
 		// stop game for next level menu
 		timeController.stopTimer();
 		
-		// display next level menü
+		// display next level menu
 		CardLayout cardLayout = (CardLayout) inGamePanel.getLayout();		
 		cardLayout.show(inGamePanel, "Next Level Panel");			
 		inGamePanel.setVisible(true);     
