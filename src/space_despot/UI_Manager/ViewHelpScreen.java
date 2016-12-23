@@ -4,9 +4,14 @@
  * and open the template in the editor.
  */
 package space_despot.UI_Manager;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import space_despot.Interfaces.MainMenuBackable;
 import space_despot.Interfaces.Pausable;
+import space_despot.UI_Manager.ViewHighscoresScreen.BackToMainMenuButtonListener;
 /**
  *
  * @author Nylandre
@@ -131,6 +136,19 @@ public class ViewHelpScreen extends javax.swing.JPanel {
                 .addComponent(back_main_menu_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(95, Short.MAX_VALUE))
         );
+        
+        back_main_menu_button.addActionListener(new BackToMainMenuButtonListener());
+        
+
+        
+    }
+    
+    public class BackToMainMenuButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) { 
+			CardLayout cardLayoutTwo = (CardLayout) contentPane.getLayout();
+			cardLayoutTwo.show(contentPane, "Main Menu Screen");
+		}  	
     }
 }
 
