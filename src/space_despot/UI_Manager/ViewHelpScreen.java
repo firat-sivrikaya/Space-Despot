@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import space_despot.Interfaces.MainMenuBackable;
 import space_despot.Interfaces.Pausable;
-import space_despot.UI_Manager.ViewHighscoresScreen.BackToMainMenuButtonListener;
 /**
  *
  * @author Nylandre
