@@ -1,7 +1,7 @@
 /**
  * 
  */
-package space_despot.Game_Screen_Elements;
+package space_despot.Enums;
 
 /**
  * UpgradeType

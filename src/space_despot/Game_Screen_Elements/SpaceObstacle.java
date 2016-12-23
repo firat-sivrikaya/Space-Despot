@@ -19,5 +19,9 @@ public class SpaceObstacle extends SpaceObject{
 		super();
 	}
 	// Methods
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+	}
 
 }

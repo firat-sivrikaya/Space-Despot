@@ -1,10 +1,11 @@
 package space_despot.Game_Screen_Elements;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 
 public abstract class SpaceObject {
 	
-	// Properties
+	// PROPERTIES
     protected Image image;
     protected int x; // x coordinate
     protected int y; // y coordinate
@@ -13,12 +14,20 @@ public abstract class SpaceObject {
     protected int velocityX;
     protected int velocityY;
 	
-	// Constructor
+	// CONSTRUCTOR
 	public SpaceObject() {
 		super();
 	}
 	
-	// Methods
+	// ABSTRACT METHODS
+	public abstract void move();
+	
+	// get bounds for collision
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, width, height);
+	}
+
+	// GETTERS AND SETTERS
 	public Image getImage() {
 		return image;
 	}
@@ -73,10 +82,5 @@ public abstract class SpaceObject {
 
 	public void setVelocityY(int velocityY) {
 		this.velocityY = velocityY;
-	}
-	
-	public void move()
-	{
-		// to be implemented
 	}
 }

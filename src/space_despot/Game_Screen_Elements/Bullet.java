@@ -9,16 +9,23 @@ package space_despot.Game_Screen_Elements;
  * @author djcedrics
  * @date Dec 6, 2016
  */
-public class Bullet extends SpaceObject{
+public abstract class Bullet extends SpaceObject{
 	
 	// Constants
+	
 	// Properties
 	protected int attackDamage;
-	// Constructor
+	
+	// Constructors
+	public Bullet() {
+		
+	}
+	
 	public Bullet(int attackDamage)
 	{
 		this.attackDamage = attackDamage;
 	}
+	
 	// Methods
 	public int getAttackDamage()
 	{
