@@ -22,6 +22,7 @@ import space_despot.Constants.Constants;
 import space_despot.Game_Screen_Elements.Bullet;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
+import space_despot.Game_Screen_Elements.SpaceObstacle;
 import space_despot.Game_Screen_Elements.Spaceship;
 import space_despot.Input_Manager.PauseGameController;
 import space_despot.Input_Manager.SpaceshipMovementController;
@@ -61,6 +62,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, S
     private List<SpaceMob> spaceMobsInSpace; // asteroids and creatures
     private List<Bullet> bulletsInSpace; // spaceship bullets and creature bullets
     private List<SpaceItem> spaceItemsInSpace; // power-ups and coins
+    private List<SpaceObstacle> spaceObstaclesInSpace;
     
     private TimeController timeController;
     
@@ -142,11 +144,14 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, S
         
         // set power ups
         spaceItemsInSpace = new ArrayList<SpaceItem>();
+        
+        //set space obstacles
+        spaceObstaclesInSpace = new ArrayList<SpaceObstacle>();
              
         // set timer, each 15 ms    
         // Repaintable(this) is to do repaint from time controller
         timeController = new TimeController(spaceship,
-        		spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace, this, this, this);
+        		spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace, spaceObstaclesInSpace, this, this, this);
               
         // set components
         inGamePanel = new JPanel();
@@ -206,7 +211,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, S
         }
         
         DrawObjectsService drawObjectsService = new DrawObjectsService(g, this, spaceship, 
-    		   spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace, this);
+    		   spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace, spaceObstaclesInSpace, this);
         drawObjectsService.drawObjects();
     }
 
@@ -336,7 +341,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, S
 	
 	private void resetAll() {
 		GameResetterService gameResetterService = new GameResetterService(
-				spaceship, spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace);
+				spaceship, spaceMobsInSpace, bulletsInSpace, spaceItemsInSpace, spaceObstaclesInSpace);
 		gameResetterService.resetGame();
 	}
 }

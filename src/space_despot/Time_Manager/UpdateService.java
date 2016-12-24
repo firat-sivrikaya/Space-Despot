@@ -10,6 +10,7 @@ import space_despot.Game_Screen_Elements.Coin;
 import space_despot.Game_Screen_Elements.PowerUp;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
+import space_despot.Game_Screen_Elements.SpaceObstacle;
 import space_despot.Game_Screen_Elements.Spaceship;
 import space_despot.Interfaces.GameOverMakable;
 import space_despot.Interfaces.LevelPassable;
@@ -22,18 +23,20 @@ public class UpdateService {
 	private List<SpaceMob> spaceMobsInSpace;
 	private List<Bullet> bulletsInSpace;
 	private List<SpaceItem> spaceItemsInSpace;
+	private List<SpaceObstacle> spaceObstaclesInSpace;
 	private Repaintable repaintDelegate; // to make repaint request from here to panel
 	private GameOverMakable makeGameOverDelegate;
     private LevelPassable passLevelDelegate;
 
 	// constructor
     public UpdateService(Spaceship spaceship, List<SpaceMob> spaceMobsInSpace,
-    		List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace, 
+    		List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace, List<SpaceObstacle> spaceObstaclesInSpace,
     		Repaintable repaintDelegate, GameOverMakable makeGameOverDelegate,
     		LevelPassable passLevelDelegate) {
 		this.spaceship = spaceship;
 		this.spaceMobsInSpace = spaceMobsInSpace;
 		this.bulletsInSpace = bulletsInSpace;
+		this.spaceObstaclesInSpace = spaceObstaclesInSpace;
 		this.spaceItemsInSpace = spaceItemsInSpace;
 		this.repaintDelegate = repaintDelegate;
 		this.makeGameOverDelegate = makeGameOverDelegate;
@@ -134,14 +137,26 @@ public class UpdateService {
         	else
         		spaceItem.move();
         }
+        
+        Iterator<SpaceObstacle> spaceObstacleIterator = spaceObstaclesInSpace.iterator();
+        while(spaceObstacleIterator.hasNext())
+        {
+        	SpaceObstacle spaceObstacle = spaceObstacleIterator.next();
+        	if(spaceObstacle.getX() < 0 || spaceObstacle.getY() < 0
+        			|| spaceObstacle.getX() > Constants.SPACE_WIDTH || spaceObstacle.getY() > Constants.SPACE_HEIGHT)
+        		spaceObstacleIterator.remove();
+        	else
+        		spaceObstacle.move();
+        }
 
         // check collisions
         CollisionCheckerAndHandler collisionCheckerService =
         		new CollisionCheckerAndHandler(spaceship, spaceMobsInSpace, 
-        				bulletsInSpace, spaceItemsInSpace);
+        				bulletsInSpace, spaceItemsInSpace, spaceObstaclesInSpace);
         collisionCheckerService.checkCollisionForBullets();
         collisionCheckerService.checkCollisionBetweenSpaceshipAndSpaceItems();
         collisionCheckerService.checkCollisionBetweenSpaceshipAndSpaceMobs();
+        collisionCheckerService.checkCollisionBetweenSpaceshipAndSpaceObstacles();
         
         repaintDelegate.repaintRequest(); // repaint request from panel	
 	}

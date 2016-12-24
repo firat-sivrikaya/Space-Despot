@@ -12,6 +12,7 @@ import space_despot.Game_Screen_Elements.LaserBullet;
 import space_despot.Game_Screen_Elements.PowerUp;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
+import space_despot.Game_Screen_Elements.SpaceObstacle;
 import space_despot.Game_Screen_Elements.Spaceship;
 import space_despot.Game_Screen_Elements.SpaceshipBullet;
 
@@ -23,14 +24,16 @@ public class CollisionCheckerAndHandler {
     private List<SpaceMob> spaceMobsInSpace;
     private List<Bullet> bulletsInSpace;
     private List<SpaceItem> spaceItemsInSpace;
+    private List<SpaceObstacle> spaceObstaclesInSpace;
     
 	// constructor
     public CollisionCheckerAndHandler(Spaceship spaceship, List<SpaceMob> spaceMobsInSpace,
-    		List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace) {
+    		List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace, List<SpaceObstacle> spaceObstaclesInSpace) {
 		this.spaceship = spaceship;
 		this.spaceMobsInSpace = spaceMobsInSpace;
 		this.bulletsInSpace = bulletsInSpace;
 		this.spaceItemsInSpace = spaceItemsInSpace;
+		this.spaceObstaclesInSpace = spaceObstaclesInSpace;
 	}
     
 	// check collision between spaceship bullets and mobs
@@ -106,18 +109,35 @@ public class CollisionCheckerAndHandler {
 	public void checkCollisionBetweenSpaceshipAndSpaceMobs()
 	{
 		Rectangle rectSpaceship = spaceship.getBounds();
-		Iterator<SpaceMob> spaceMobsIterator = spaceMobsInSpace.iterator();
+		Iterator<SpaceMob> spaceMobIterator = spaceMobsInSpace.iterator();
 		
-		while(spaceMobsIterator.hasNext())
+		while(spaceMobIterator.hasNext())
 		{
-			SpaceMob mob = spaceMobsIterator.next();
+			SpaceMob mob = spaceMobIterator.next();
 			Rectangle rectMob = mob.getBounds();
 			
 			if(rectSpaceship.intersects(rectMob))
 			{
-				spaceship.setHP(spaceship.getHP() - mob.getAttackDamager());
+				spaceship.setHP(spaceship.getHP() - mob.getAttackDamage());
 				mob.setHP(0);
-				spaceMobsIterator.remove();
+				spaceMobIterator.remove();
+			}
+		}
+	}
+	
+	public void checkCollisionBetweenSpaceshipAndSpaceObstacles()
+	{
+		Rectangle rectSpaceship = spaceship.getBounds();
+		Iterator<SpaceObstacle> spaceObstacleIterator = spaceObstaclesInSpace.iterator();
+		
+		while(spaceObstacleIterator.hasNext())
+		{
+			SpaceObstacle obstacle = spaceObstacleIterator.next();
+			Rectangle rectObstacle = obstacle.getBounds();
+			
+			if(rectSpaceship.intersects(rectObstacle))
+			{
+				spaceship.setHP(0);
 			}
 		}
 	}

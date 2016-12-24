@@ -11,6 +11,7 @@ import java.util.List;
 import space_despot.Game_Screen_Elements.Bullet;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
+import space_despot.Game_Screen_Elements.SpaceObstacle;
 import space_despot.Game_Screen_Elements.Spaceship;
 import space_despot.Interfaces.LevelPassable;
 
@@ -22,11 +23,12 @@ public class DrawObjectsService {
     private List<SpaceMob> spaceMobsInSpace; // asteroids and creatures
     private List<Bullet> bulletsInSpace; // spaceship bullets and creature bullets
     private List<SpaceItem> spaceItemsInSpace; // power-ups and coins
+    private List<SpaceObstacle> spaceObstaclesInSpace;
     private LevelPassable passLevelDelegate;
       
     public DrawObjectsService(Graphics g, ImageObserver imageObserver,
     		Spaceship spaceship, List<SpaceMob> spaceMobsInSpace, 
-    		List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace,
+    		List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace, List<SpaceObstacle> spaceObstaclesInSpace,
     		LevelPassable passLevelDelegate) {
     	
     	g2 = (Graphics2D) g;
@@ -38,10 +40,9 @@ public class DrawObjectsService {
 		this.spaceMobsInSpace = spaceMobsInSpace;
 		this.bulletsInSpace = bulletsInSpace;
 		this.spaceItemsInSpace = spaceItemsInSpace;
+		this.spaceObstaclesInSpace = spaceObstaclesInSpace;
 		this.passLevelDelegate = passLevelDelegate;
 	}
-
-
 
 	public void drawObjects() {
     	// draw spaceship
@@ -104,7 +105,16 @@ public class DrawObjectsService {
         	SpaceItem spaceItem = spaceItemIterator.next();
         	g2.drawImage(spaceItem.getImage(), spaceItem.getX(), spaceItem.getY(), 
         			spaceItem.getWidth(), spaceItem.getHeight(), imageObserver);
-        } 
+        }
+        
+        //draw obstacles
+        Iterator<SpaceObstacle> spaceObstacleIterator = spaceObstaclesInSpace.iterator();
+        while(spaceObstacleIterator.hasNext())
+        {
+        	SpaceObstacle obstacle = spaceObstacleIterator.next();
+        	g2.drawImage(obstacle.getImage(), obstacle.getX(), obstacle.getY(),
+        			obstacle.getWidth(), obstacle.getHeight(), imageObserver);
+        }
     }
 
 }

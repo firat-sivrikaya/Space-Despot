@@ -9,6 +9,7 @@ import javax.swing.Timer;
 import space_despot.Game_Screen_Elements.Bullet;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
+import space_despot.Game_Screen_Elements.SpaceObstacle;
 import space_despot.Game_Screen_Elements.Spaceship;
 import space_despot.Interfaces.GameOverMakable;
 import space_despot.Interfaces.LevelPassable;
@@ -22,12 +23,14 @@ public class TimeController implements ActionListener {
 	private List<SpaceMob> spaceMobsInSpace;
 	private List<Bullet> bulletsInSpace;
 	private List<SpaceItem> spaceItemsInSpace;
+	private List<SpaceObstacle> spaceObstaclesInSpace;
 	
 	private Repaintable repaintDelegate; // to make repaint request from here to panel
 	private LevelPassable passLevelDelegate;
 	private GameOverMakable makeGameOverDelegate;
 	
 	private SpaceMobSenderService spaceMobSenderService;
+	private SpaceObstacleSenderService spaceObstacleSenderService;
 	
 	private Timer timer;
 	private int count;
@@ -37,17 +40,20 @@ public class TimeController implements ActionListener {
 	// CONSTRUCTOR
 	public TimeController(Spaceship spaceship, List<SpaceMob> spaceMobsInSpace, 
 			List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace, 
+			List<SpaceObstacle> spaceObstaclesInSpace,
 			Repaintable repaintDelegate, LevelPassable passLevelDelegate, 
 			GameOverMakable makeGameOverDelegate) {
 		this.spaceship = spaceship;
 		this.spaceMobsInSpace = spaceMobsInSpace;
 		this.bulletsInSpace = bulletsInSpace;
 		this.spaceItemsInSpace = spaceItemsInSpace;
+		this.spaceObstaclesInSpace = spaceObstaclesInSpace;
 		this.repaintDelegate = repaintDelegate;
 		this.passLevelDelegate = passLevelDelegate;
 		this.makeGameOverDelegate = makeGameOverDelegate;
 		
 		spaceMobSenderService = new SpaceMobSenderService();
+		spaceObstacleSenderService = new SpaceObstacleSenderService();
 
 		isBossTime = false;
 		
@@ -86,6 +92,7 @@ public class TimeController implements ActionListener {
         if (count%60 == 0 && !isBossTime) {
         	spaceMobsInSpace.add(spaceMobSenderService
         			.sendAsteroid(passLevelDelegate.getGameLevel()));
+        	spaceObstaclesInSpace.add(spaceObstacleSenderService.sendStar());
         }
         
         // send bullets from all creatures each 900 ms
@@ -94,7 +101,10 @@ public class TimeController implements ActionListener {
     				spaceMobsInSpace, bulletsInSpace);
         	spaceMobsShootingService.sendBulletsFromMobs(); 		
         }       
-     
+        //send blackhole
+        if(count == 300)
+        	spaceObstaclesInSpace.add(spaceObstacleSenderService.sendBlackhole());
+        
         // boss time for first level
         if (count == 600) {
         	isBossTime = true;
@@ -108,7 +118,7 @@ public class TimeController implements ActionListener {
         
         // do updates which also include collision handles
         UpdateService updateService = new UpdateService(spaceship, spaceMobsInSpace,
-				bulletsInSpace, spaceItemsInSpace, repaintDelegate, 
+				bulletsInSpace, spaceItemsInSpace, spaceObstaclesInSpace, repaintDelegate, 
 				makeGameOverDelegate, passLevelDelegate);
         updateService.updateObjects();
         

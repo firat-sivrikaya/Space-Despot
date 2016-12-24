@@ -8,6 +8,7 @@ import space_despot.Enums.Movement;
 import space_despot.Game_Screen_Elements.Bullet;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
+import space_despot.Game_Screen_Elements.SpaceObstacle;
 import space_despot.Game_Screen_Elements.Spaceship;
 
 
@@ -18,14 +19,16 @@ public class GameResetterService {
 	private List<SpaceMob> spaceMobsInSpace;
 	private List<Bullet> bulletsInSpace;
 	private List<SpaceItem> spaceItemsInSpace;
+	 private List<SpaceObstacle> spaceObstaclesInSpace;
 		
 	// constructor
 	public GameResetterService(Spaceship spaceship, List<SpaceMob> spaceMobsInSpace, 
-			List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace) {
+			List<Bullet> bulletsInSpace, List<SpaceItem> spaceItemsInSpace, List<SpaceObstacle> spaceObstaclesInSpace) {
 		this.spaceship = spaceship;
 		this.spaceMobsInSpace = spaceMobsInSpace;
 		this.bulletsInSpace = bulletsInSpace;
 		this.spaceItemsInSpace = spaceItemsInSpace;
+		this.spaceObstaclesInSpace = spaceObstaclesInSpace;
 	}
 	
 	public void resetGame() {
@@ -40,6 +43,7 @@ public class GameResetterService {
         bulletsInSpace.clear();
         spaceMobsInSpace.clear();
         spaceItemsInSpace.clear();
+        spaceObstaclesInSpace.clear();
 	}
 
 }
