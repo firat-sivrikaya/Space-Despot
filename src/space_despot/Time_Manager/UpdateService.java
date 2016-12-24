@@ -141,6 +141,7 @@ public class UpdateService {
         				bulletsInSpace, spaceItemsInSpace);
         collisionCheckerService.checkCollisionForBullets();
         collisionCheckerService.checkCollisionBetweenSpaceshipAndSpaceItems();
+        collisionCheckerService.checkCollisionBetweenSpaceshipAndSpaceMobs();
         
         repaintDelegate.repaintRequest(); // repaint request from panel	
 	}

@@ -115,4 +115,9 @@ public abstract class SpaceMob extends SpaceObject {
 	public void setHasCoin(boolean hasCoin) {
 		this.hasCoin = hasCoin;
 	}
+	
+	public int getAttackDamager()
+	{
+		return this.attackDamage;
+	}
 }

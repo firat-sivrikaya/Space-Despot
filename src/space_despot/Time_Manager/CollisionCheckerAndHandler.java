@@ -72,7 +72,7 @@ public class CollisionCheckerAndHandler {
 		}		
 	}
 
-	// check collision between spaceship and powerups
+	// check collision between spaceship and space items (power up or coin)
 	public void checkCollisionBetweenSpaceshipAndSpaceItems() {
 		Rectangle rectSpaceship = spaceship.getBounds();
 		
@@ -101,6 +101,25 @@ public class CollisionCheckerAndHandler {
 				}						
             }				
 		}			
+	}
+	
+	public void checkCollisionBetweenSpaceshipAndSpaceMobs()
+	{
+		Rectangle rectSpaceship = spaceship.getBounds();
+		Iterator<SpaceMob> spaceMobsIterator = spaceMobsInSpace.iterator();
+		
+		while(spaceMobsIterator.hasNext())
+		{
+			SpaceMob mob = spaceMobsIterator.next();
+			Rectangle rectMob = mob.getBounds();
+			
+			if(rectSpaceship.intersects(rectMob))
+			{
+				spaceship.setHP(spaceship.getHP() - mob.getAttackDamager());
+				mob.setHP(0);
+				spaceMobsIterator.remove();
+			}
+		}
 	}
 
 	
