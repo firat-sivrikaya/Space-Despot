@@ -130,13 +130,11 @@ public class NextLevelPanel extends JPanel {
         
         continueNextLevelButton.addActionListener(new ContinueNextLevelButtonListener());
         increaseMaxHPButton.addActionListener(new IncreaseMaxHPButtonListener());
-<<<<<<< HEAD
         exitButton.addActionListener(new ExitButtonListener());
-=======
+
         increaseAttackDamageButton.addActionListener(new IncreaseAttackDamageButtonListener());
         increaseMovementSpeedButton.addActionListener(new IncreaseMovementSpeedButtonListener());
->>>>>>> origin/master
-        
+
     }
 
     public class ContinueNextLevelButtonListener implements ActionListener {
@@ -166,15 +164,14 @@ public class NextLevelPanel extends JPanel {
 			
 		}   	
     }
-    
-<<<<<<< HEAD
+
     public class ExitButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			backToMainMenuDelegate.backToMainMenuAfterGameOver();
 		}
     }
-=======
+
     public class IncreaseAttackDamageButtonListener implements ActionListener{
     	@Override
     	public void actionPerformed(ActionEvent e) {
@@ -199,5 +196,4 @@ public class NextLevelPanel extends JPanel {
 		}   	
     }
 
->>>>>>> origin/master
 }
