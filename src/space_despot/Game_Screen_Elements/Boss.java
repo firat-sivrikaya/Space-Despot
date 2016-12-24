@@ -16,7 +16,9 @@ import space_despot.Constants.Constants;
 public class Boss extends SpaceMob {
 
 	// CONSTANTS
-	private final ImageIcon BOSS_ICON = new ImageIcon("resources/images/boss.png");
+	private final ImageIcon BOSS_ICON_1 = new ImageIcon("resources/images/boss_level1.png");
+	private final ImageIcon BOSS_ICON_2 = new ImageIcon("resources/images/boss_level2.png");
+	private final ImageIcon BOSS_ICON_3 = new ImageIcon("resources/images/boss_level3.png");
 	 
 	// CONSTRUCTOR
 	public Boss(int level) {
@@ -24,7 +26,18 @@ public class Boss extends SpaceMob {
 		maxHP = level * Constants.BOSS_INITIAL_MAX_HP;
 		HP = maxHP;
 		attackDamage = level * Constants.BOSS_ATTACK_DAMAGE;
-		image = BOSS_ICON.getImage();
+		if ( level == 1 )
+		{
+			image = BOSS_ICON_1.getImage();
+		}
+		else if ( level == 2 )
+		{
+			image = BOSS_ICON_2.getImage();
+		}		
+		else
+		{
+			image = BOSS_ICON_3.getImage();
+		}
 		width = image.getWidth(null);
 		height = image.getHeight(null);	
 		velocityX = level * Constants.BOSS_VELOCITY;
