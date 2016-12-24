@@ -91,8 +91,7 @@ public class TimeController implements ActionListener {
         // send asteroid each 900 ms
         if (count%60 == 0 && !isBossTime) {
         	spaceMobsInSpace.add(spaceMobSenderService
-        			.sendAsteroid(passLevelDelegate.getGameLevel()));
-        	spaceObstaclesInSpace.add(spaceObstacleSenderService.sendStar());
+        			.sendAsteroid(passLevelDelegate.getGameLevel()));         
         }
         
         // send bullets from all creatures each 900 ms
@@ -101,6 +100,13 @@ public class TimeController implements ActionListener {
     				spaceMobsInSpace, bulletsInSpace);
         	spaceMobsShootingService.sendBulletsFromMobs(); 		
         }       
+        
+        // send asteroid each 2700 ms
+        if (count%180 == 0 && !isBossTime) {
+        	spaceObstaclesInSpace.add(spaceObstacleSenderService.sendStar());      
+        }
+        
+        
         //send blackhole
         if(count == 300)
         	spaceObstaclesInSpace.add(spaceObstacleSenderService.sendBlackhole());

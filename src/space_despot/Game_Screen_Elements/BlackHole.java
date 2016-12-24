@@ -11,7 +11,7 @@ import space_despot.Constants.*;
 public class BlackHole extends SpaceObstacle{
 	
 	// Constants
-	private final ImageIcon BLACKHOLE_ICON = new ImageIcon("");
+	private final ImageIcon BLACKHOLE_ICON = new ImageIcon("resources/images/black-hole.png");
 	// Properties
 	// Constructor
 	public BlackHole()
