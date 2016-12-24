@@ -14,7 +14,7 @@ import space_despot.Enums.UpgradeType;
 import space_despot.Game_Screen_Elements.Upgrade;
 import space_despot.Interfaces.LevelPassable;
 import space_despot.Interfaces.Repaintable;
-import space_despot.Interfaces.Upgradeable;
+import space_despot.Interfaces.UpgradableShip;
 
 
 @SuppressWarnings("serial")
@@ -23,7 +23,7 @@ public class NextLevelPanel extends JPanel {
 	// PROPERTIES
     private LevelPassable passLevelDelegate;
     private Repaintable repaintDelegate;
-    private Upgradeable upgradeDelegate;
+    private UpgradableShip upgradeDelegate;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton continueNextLevelButton;
@@ -39,7 +39,7 @@ public class NextLevelPanel extends JPanel {
 
     // CONSTRUCTOR
     public NextLevelPanel(LevelPassable passLevelDelegate, 
-    		Repaintable repaintDelegate, Upgradeable upgradeDelegate) {
+    		Repaintable repaintDelegate, UpgradableShip upgradeDelegate) {
         
         this.passLevelDelegate = passLevelDelegate;
         this.upgradeDelegate = upgradeDelegate;

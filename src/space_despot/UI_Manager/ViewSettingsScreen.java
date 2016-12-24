@@ -222,8 +222,8 @@ public class ViewSettingsScreen extends JPanel {
     public class BackToMainMenuButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) { 
-			CardLayout cardLayoutTwo = (CardLayout) contentPane.getLayout();
-			cardLayoutTwo.show(contentPane, "Main Menu Screen");
+			CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+			cardLayout.show(contentPane, "Main Menu Screen");
 		}  	
     }
     

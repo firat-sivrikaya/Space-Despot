@@ -29,19 +29,25 @@ import space_despot.Input_Manager.SpaceshipShootingController;
 import space_despot.Input_Manager.SpaceshipUsingPowerUpController;
 import space_despot.Interfaces.GameOverMakable;
 import space_despot.Interfaces.GameStartable;
+import space_despot.Interfaces.Helpable;
+import space_despot.Interfaces.HighScorable;
 import space_despot.Interfaces.KeysChangeable;
 import space_despot.Interfaces.LevelPassable;
 import space_despot.Interfaces.MainMenuBackable;
 import space_despot.Interfaces.Pausable;
 import space_despot.Interfaces.Repaintable;
+import space_despot.Interfaces.Setable;
 import space_despot.Interfaces.Soundable;
+
 import space_despot.Time_Manager.TimeController;
+
+
 
 
 @SuppressWarnings("serial")
 public class PlayGameScreen extends JPanel 
 implements Repaintable, Pausable, LevelPassable, 
-GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
+GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, Soundable,Setable,Helpable {
 	  
     // PROPERTIES
 	private JPanel contentPane;
@@ -147,7 +153,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     	inGamePanel.setLayout(new CardLayout());
     	add(inGamePanel);
     	
-    	JPanel pausePanel = new PauseGamePanel(this, this);
+    	JPanel pausePanel = new PauseGamePanel(this,this,this,this, this);
     	JPanel nextLevelPanel = new NextLevelPanel(this, this, spaceship);
     	JPanel chooseSpaceshipTypePanel = new ChooseSpaceshipTypePanel(this, this, this, spaceship);
     	
@@ -270,13 +276,30 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
 		timeController.setCount(0);
 		
 		// display game over panel at the middle of screen
-		JPanel gameOverPanel = new GameOverPanel(spaceship.getScore(), this);
+		//JPanel gameOverPanel = new GameOverPanel(spaceship.getScore(),spaceship.getCoin(),this.getGameLevel(),this, this);
+		JPanel gameOverPanel = new GameOverPanel(spaceship.getScore(),this);
 		inGamePanel.add(gameOverPanel, "Game Over Panel");
 		CardLayout cardLayout = (CardLayout) inGamePanel.getLayout();		
 		cardLayout.show(inGamePanel, "Game Over Panel");			
 		inGamePanel.setVisible(true); 
 	}
-
+	@Override
+	public void showHelpMenu(){
+	
+		CardLayout cardLayout = (CardLayout) contentPane.getLayout();		
+		cardLayout.show(contentPane, "View Help Screen");			
+	}
+	@Override
+	public void showSettingsMenu(){
+		CardLayout cardLayout = (CardLayout) contentPane.getLayout();		
+		cardLayout.show(contentPane, "View Settings Screen");	
+	}
+	@Override
+	public void showHighScoreMenu(){
+		CardLayout cardLayout = (CardLayout) contentPane.getLayout();		
+		cardLayout.show(contentPane, "View Highscores Screen");	
+	}
+	
 	@Override
 	public void backToMainMenuAfterGameOver() {		
 		// reset game screen elements
