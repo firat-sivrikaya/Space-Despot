@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle;
 
+import space_despot.Application_Logic.MusicManager;
 import space_despot.Enums.UpgradeType;
 import space_despot.Game_Screen_Elements.Upgrade;
 import space_despot.Interfaces.LevelPassable;
@@ -24,6 +25,7 @@ public class NextLevelPanel extends JPanel {
     private LevelPassable passLevelDelegate;
     private Repaintable repaintDelegate;
     private UpgradableShip upgradeDelegate;
+    private MusicManager musicManager;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton continueNextLevelButton;
@@ -39,11 +41,12 @@ public class NextLevelPanel extends JPanel {
 
     // CONSTRUCTOR
     public NextLevelPanel(LevelPassable passLevelDelegate, 
-    		Repaintable repaintDelegate, UpgradableShip upgradeDelegate) {
+    		Repaintable repaintDelegate, UpgradableShip upgradeDelegate, MusicManager musicManager) {
         
         this.passLevelDelegate = passLevelDelegate;
         this.upgradeDelegate = upgradeDelegate;
         this.repaintDelegate = repaintDelegate;
+        this.musicManager = musicManager;
         
         // construct components
               
@@ -146,6 +149,8 @@ public class NextLevelPanel extends JPanel {
     		// set upgrade and do it for spaceship
 			Upgrade upgrade = new Upgrade(UpgradeType.MAX_HP);
 			upgradeDelegate.doUpgradeWithCoins(upgrade);
+			// do sound
+			musicManager.playUpgradeSound();
 			// repaint for updates (coin, maxHP etc)
 			repaintDelegate.repaintRequest();
 			

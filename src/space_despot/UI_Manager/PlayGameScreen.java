@@ -159,7 +159,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, S
     	add(inGamePanel);
     	
     	JPanel pausePanel = new PauseGamePanel(this,this,this,this, this);
-    	JPanel nextLevelPanel = new NextLevelPanel(this, this, spaceship);
+    	JPanel nextLevelPanel = new NextLevelPanel(this, this, spaceship, musicManager);
     	JPanel chooseSpaceshipTypePanel = new ChooseSpaceshipTypePanel(this, this, this, spaceship);
     	
     	inGamePanel.add(pausePanel, "Pause Panel"); 
