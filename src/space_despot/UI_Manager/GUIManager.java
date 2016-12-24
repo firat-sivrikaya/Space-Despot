@@ -32,6 +32,7 @@ public class GUIManager {
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(true);
      	frame.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(63, 134, 145)));
+     	frame.setTitle("Space Despot Pre-Alpha Release v0.1");
      	try {
 			icon = ImageIO.read(new File("resources/images/icon.png"));
 			frame.setIconImage(icon);
