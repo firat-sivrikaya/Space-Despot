@@ -12,7 +12,7 @@ public class LaserBullet extends Bullet {
 	// CONSTRUCTOR
 	public LaserBullet() {
 		super();
-		attackDamage = 300;
+		attackDamage = 120;
 		image = BULLET_ICON.getImage();
 		width = image.getWidth(null);
 		height = image.getHeight(null);	
