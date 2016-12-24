@@ -88,7 +88,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
         movingBackgroundY = 0;
     	yOffset = 0;
 		// on create, before game starts, we are in the main menu
-    	musicManager = new MusicManager();
+    	musicManager = MusicManager.getMusicManager();
 		musicManager.startMenuBackgroundMusic();
     	
     	// set space
@@ -294,7 +294,11 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
 		cardLayoutTwo.show(contentPane, "Main Menu Screen");
 		
 		// stop game music, start menu music
-		musicManager.stopGameBackgroundMusic();
+		if(musicManager.isMenuBackgroundSoundActive())
+			musicManager.stopMenuBackgroundMusic();
+		if(musicManager.isGameBackgroundActive())
+			musicManager.stopGameBackgroundMusic();
+		musicManager.startMenuBackgroundMusic();
 	}
 	
 	@Override

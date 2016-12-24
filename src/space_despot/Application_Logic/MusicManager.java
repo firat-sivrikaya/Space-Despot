@@ -12,6 +12,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class MusicManager {
 	
 	//Sound variables
+	
+	private static MusicManager musicManager = new MusicManager();
+	
 	//Menu background sound
 	private  File menuBackgroundSound;
 	private  AudioInputStream createMenuBackgroundSound;
@@ -81,12 +84,19 @@ public class MusicManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		FloatControl gainControl = 
 			    (FloatControl) playMenuBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(-5.0f);
 		playMenuBackgroundSound.loop(999999999);
 		
 	}
+	
+	public static MusicManager getMusicManager()
+	{
+		return musicManager;
+	}
+	
 	//Stop menu background sound
 	public  void stopMenuBackgroundMusic() {
 		if (playMenuBackgroundSound != null && playMenuBackgroundSound.isRunning())
@@ -105,6 +115,7 @@ public class MusicManager {
 					.getAudioInputStream(gameBackgroundSound);
 			
 			try {
+				System.out.println("asdasds");
 				playGameBackgroundSound = AudioSystem.getClip();
 
 			} catch (LineUnavailableException e) {
@@ -275,6 +286,44 @@ public class MusicManager {
 		}
 		playCollisionSound.start();
 		
+	}
+	
+	public void changeMenuBackgroundSound(float amount)
+	{
+		if(playMenuBackgroundSound != null || playMenuBackgroundSound.isActive()){
+			FloatControl gainControl = 	(FloatControl) playMenuBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
+			float decibel = (float) (Math.log(amount) / Math.log(10.0f) * 20.0);
+			gainControl.setValue(decibel);	
+		}
+	}
+	
+	public void changeGameBackground(float amount)
+	{
+		if(playGameBackgroundSound != null)
+		{
+			if(isGameBackgroundActive())
+			{
+				FloatControl gainControl = 	(FloatControl) playGameBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
+				float decibel = (float) (Math.log(amount) / Math.log(10.0f) * 20.0);
+				gainControl.setValue(decibel);	
+			}
+		}
+	}
+	
+	public boolean isMenuBackgroundSoundActive()
+	{
+		if(playMenuBackgroundSound.isActive())
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isGameBackgroundActive()
+	{
+		if(playGameBackgroundSound.isActive())
+			return true;
+		else
+			return false;
 	}
 	
 	//Play game-over sound

@@ -24,7 +24,10 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 import javax.swing.LayoutStyle;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
+import space_despot.Application_Logic.MusicManager;
 import space_despot.Interfaces.KeysChangeable;
 
 
@@ -37,6 +40,7 @@ public class ViewSettingsScreen extends JPanel {
 	// PROPERTIES
     private JPanel contentPane;
     private BufferedImage backgroundImage;
+    private MusicManager musicManager;
     	
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton backButton;
@@ -70,7 +74,7 @@ public class ViewSettingsScreen extends JPanel {
 			e.printStackTrace();
 		} 
         
-        
+        musicManager = MusicManager.getMusicManager();
         // construct components
         jTabbedPane1 = new JTabbedPane();
         jPanel1 = new JPanel();
@@ -203,6 +207,8 @@ public class ViewSettingsScreen extends JPanel {
         shootingKey.addItemListener(new ShootingKeyListener());
         usingPowerUpKey.addItemListener(new UsingPowerUpKeyListener());
         
+        jSlider1.addChangeListener(new FXListener());
+        jSlider2.addChangeListener(new BackgroundMusicListener());
         backButton.addActionListener(new BackToMainMenuButtonListener());
         
     }
@@ -251,5 +257,31 @@ public class ViewSettingsScreen extends JPanel {
         	   }    	   
            }
         }       
+    }
+    
+    public class FXListener implements ChangeListener
+    {
+
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			JSlider source = (JSlider) e.getSource();
+			
+			
+		}
+    	
+    }
+    
+    public class BackgroundMusicListener implements ChangeListener
+    {
+
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			JSlider source = (JSlider) e.getSource();
+//			if(!source.getValueIsAdjusting())
+			musicManager.changeMenuBackgroundSound((float)(source.getValue()/100f));
+			musicManager.changeGameBackground((float)(source.getValue()/100f));
+			
+		}
+    	
     }
 }
