@@ -61,11 +61,16 @@ public class DrawObjectsService {
     	// type hp / maxHP
     	g2.drawString("" + spaceship.getHP() + "/" + spaceship.getMaxHP(), 10, 48);
     	
+    	// draw attack damage
+    	g2.drawString("Attack Damage: " + spaceship.getAttackDamage(), 10, 68);
+    	
     	// draw power-up
     	if (spaceship.getCurrentPowerUp() != null)
-        	g2.drawString("Power-up: READY", 10, 68);
+        	g2.drawString("Power-up: " + spaceship.getCurrentPowerUp().getType().toString(), 10, 88);
         else
-        	g2.drawString("Power-up: X", 10, 68);
+        	g2.drawString("Power-up: X", 10, 88);
+    	
+    	
         
         // draw score and coin and level
         g2.drawString("Score: " + spaceship.getScore(), 630, 20);
