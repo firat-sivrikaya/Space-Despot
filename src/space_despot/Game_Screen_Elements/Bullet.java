@@ -3,12 +3,7 @@
  */
 package space_despot.Game_Screen_Elements;
 
-/**
- * Bullet
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public abstract class Bullet extends SpaceObject{
 	
 	// Constants

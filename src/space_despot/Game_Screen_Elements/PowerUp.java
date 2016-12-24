@@ -9,12 +9,7 @@ import javax.swing.ImageIcon;
 
 import space_despot.Enums.PowerUpType;
 
-/**
- * PowerUp
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public class PowerUp extends SpaceItem {
 	
 	// CONSTANTS

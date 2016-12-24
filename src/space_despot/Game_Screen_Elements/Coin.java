@@ -5,12 +5,7 @@ package space_despot.Game_Screen_Elements;
 
 import javax.swing.ImageIcon;
 
-/**
- * Coin
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public class Coin extends SpaceItem {
 	
 	// CONSTANTS

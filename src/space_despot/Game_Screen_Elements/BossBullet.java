@@ -7,12 +7,7 @@ import javax.swing.ImageIcon;
 
 import space_despot.Constants.Constants;
 
-/**
- * BossBullet
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public class BossBullet extends Bullet {
 
 	// CONSTANTS

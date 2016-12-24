@@ -4,12 +4,7 @@
 package space_despot.Game_Screen_Elements;
 
 
-/**
- * SpaceMob
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public abstract class SpaceMob extends SpaceObject {
 
 	// PROPERTIES

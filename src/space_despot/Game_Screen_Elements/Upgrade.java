@@ -6,12 +6,7 @@ package space_despot.Game_Screen_Elements;
 import space_despot.Constants.Constants;
 import space_despot.Enums.UpgradeType;
 
-/**
- * Upgrade
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public class Upgrade {
 	
 	private UpgradeType upgradeType;

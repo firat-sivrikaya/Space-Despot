@@ -9,12 +9,7 @@ import javax.swing.ImageIcon;
 
 import space_despot.Constants.Constants;
 
-/**
- * Creature
- *
- * @author djcedrics
- * @date Dec 6, 2016
- */
+
 public class Creature extends SpaceMob {
 	
 	// CONSTANTS
