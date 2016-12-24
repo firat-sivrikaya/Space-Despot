@@ -115,7 +115,6 @@ public class MusicManager {
 					.getAudioInputStream(gameBackgroundSound);
 			
 			try {
-				System.out.println("asdasds");
 				playGameBackgroundSound = AudioSystem.getClip();
 
 			} catch (LineUnavailableException e) {
@@ -290,10 +289,13 @@ public class MusicManager {
 	
 	public void changeMenuBackgroundSound(float amount)
 	{
-		if(playMenuBackgroundSound != null || playMenuBackgroundSound.isActive()){
-			FloatControl gainControl = 	(FloatControl) playMenuBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
-			float decibel = (float) (Math.log(amount) / Math.log(10.0f) * 20.0);
-			gainControl.setValue(decibel);	
+		if(playMenuBackgroundSound != null)
+		{		
+			if(playMenuBackgroundSound != null){
+				FloatControl gainControl = 	(FloatControl) playMenuBackgroundSound.getControl(FloatControl.Type.MASTER_GAIN);
+				float decibel = (float) (Math.log(amount) / Math.log(10.0f) * 20.0);
+				gainControl.setValue(decibel);	
+			}
 		}
 	}
 	
@@ -312,18 +314,27 @@ public class MusicManager {
 	
 	public boolean isMenuBackgroundSoundActive()
 	{
-		if(playMenuBackgroundSound.isActive())
-			return true;
-		else
-			return false;
+		if(playMenuBackgroundSound != null)
+		{
+			if(playMenuBackgroundSound.isActive())
+				return true;
+			else
+				return false;
+		}
+		return false;
 	}
 	
 	public boolean isGameBackgroundActive()
 	{
-		if(playGameBackgroundSound.isActive())
-			return true;
-		else
-			return false;
+		
+		if(playGameBackgroundSound != null)
+		{
+			if(playGameBackgroundSound.isActive())
+				return true;
+			else
+				return false;
+		}
+		return false;
 	}
 	
 	//Play game-over sound
