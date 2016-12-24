@@ -2,7 +2,11 @@ package space_despot.UI_Manager;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,6 +21,7 @@ public class GUIManager {
     private ViewSettingsScreen viewSettingsScreen;
     private ViewHighscoresScreen viewHighscoresScreen;
     private ViewHelpScreen viewHelpScreen;
+    private BufferedImage icon;
     //private ViewUpgradesScreen viewUpgradesScreen;
   
     private void displayGUI()
@@ -27,6 +32,13 @@ public class GUIManager {
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
         frame.setUndecorated(true);
      	frame.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(63, 134, 145)));
+     	try {
+			icon = ImageIO.read(new File("resources/images/icon.png"));
+			frame.setIconImage(icon);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+     	
      	
         contentPane = new JPanel();
         contentPane.setLayout(new CardLayout());
