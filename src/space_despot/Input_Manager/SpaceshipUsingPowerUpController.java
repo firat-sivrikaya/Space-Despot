@@ -56,6 +56,8 @@ public class SpaceshipUsingPowerUpController {
 			if (temp != null) {
 				if (temp.getType() == PowerUpType.LASER_GUN) {
 					bulletsInSpace.add(spaceship.shootNewLaserBullet());
+				} else if (temp.getType() == PowerUpType.REPAIR) {
+					spaceship.setHP(spaceship.getMaxHP());
 				}
 			}
 			
