@@ -161,6 +161,30 @@ public class Spaceship extends SpaceObject implements UpgradableShip, TypeChange
 			}			
 		}
 		
+		if(upgrade.getUpgradeType() == UpgradeType.ATTACK_DAMAGE)
+		{
+			if(coin >= upgrade.getCost())
+			{
+				attackDamage = attackDamage + ((attackDamage * 10) / 100);
+				coin = coin - upgrade.getCost();
+				return true;
+			}
+			else 
+				return false;
+		}
+		
+		if(upgrade.getUpgradeType() == UpgradeType.MOVEMENT_SPEED)
+		{
+			if(coin >= upgrade.getCost())
+			{
+				velocityX = velocityX + 1;
+				velocityY = velocityY + 1;
+				coin = coin - upgrade.getCost();
+				return true;
+			}
+			else 
+				return false;
+		}
 		return false;
 	}
 

@@ -130,7 +130,12 @@ public class NextLevelPanel extends JPanel {
         
         continueNextLevelButton.addActionListener(new ContinueNextLevelButtonListener());
         increaseMaxHPButton.addActionListener(new IncreaseMaxHPButtonListener());
+<<<<<<< HEAD
         exitButton.addActionListener(new ExitButtonListener());
+=======
+        increaseAttackDamageButton.addActionListener(new IncreaseAttackDamageButtonListener());
+        increaseMovementSpeedButton.addActionListener(new IncreaseMovementSpeedButtonListener());
+>>>>>>> origin/master
         
     }
 
@@ -162,10 +167,37 @@ public class NextLevelPanel extends JPanel {
 		}   	
     }
     
+<<<<<<< HEAD
     public class ExitButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			backToMainMenuDelegate.backToMainMenuAfterGameOver();
 		}
     }
+=======
+    public class IncreaseAttackDamageButtonListener implements ActionListener{
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+    		// set upgrade and do it for spaceship
+			Upgrade upgrade = new Upgrade(UpgradeType.ATTACK_DAMAGE);
+			upgradeDelegate.doUpgradeWithCoins(upgrade);
+			// repaint for updates (coin, maxHP etc)
+			repaintDelegate.repaintRequest();
+			
+		}   	
+    }
+    
+    public class IncreaseMovementSpeedButtonListener implements ActionListener{
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+    		// set upgrade and do it for spaceship
+			Upgrade upgrade = new Upgrade(UpgradeType.MOVEMENT_SPEED);
+			upgradeDelegate.doUpgradeWithCoins(upgrade);
+			// repaint for updates (coin, maxHP etc)
+			repaintDelegate.repaintRequest();
+			
+		}   	
+    }
+
+>>>>>>> origin/master
 }

@@ -26,6 +26,8 @@ public interface Constants {
 	static final int CREATURE_INITIAL_ATTACK_DAMAGE = 20;
 	static final int ASTEROID_INITIAL_ATTACK_DAMAGE = 40;
 	static final int MAX_HP_UPGRADE_COST = 100;
+	static final int MAX_ATTACK_UPGRADE_COST = 100;
+	static final int MAX_MOVEMENT_SPEED_COST = 1000;
 	static final int BOSS_INITIAL_MAX_HP = 200;
 	static final int BOSS_ATTACK_DAMAGE = 40;
 	static final int OBSTACLE_VELOCITY_Y = 1;
