@@ -38,17 +38,13 @@ import space_despot.Interfaces.MainMenuBackable;
 import space_despot.Interfaces.Pausable;
 import space_despot.Interfaces.Repaintable;
 import space_despot.Interfaces.Setable;
-import space_despot.Interfaces.Soundable;
 
 import space_despot.Time_Manager.TimeController;
-
-
-
 
 @SuppressWarnings("serial")
 public class PlayGameScreen extends JPanel 
 implements Repaintable, Pausable, LevelPassable, 
-GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable, Soundable,Setable,Helpable {
+GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable,HighScorable,Setable,Helpable {
 	  
     // PROPERTIES
 	private JPanel contentPane;
