@@ -170,6 +170,7 @@ public class MainMenuScreen extends JPanel {
     public class ViewHighscoresButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			((ViewHighscoresScreen) contentPane.getComponent(3)).updateHighscores();
 			CardLayout cardLayout = (CardLayout) contentPane.getLayout();	
 			cardLayout.show(contentPane, "Highscores Screen");
 		}    	

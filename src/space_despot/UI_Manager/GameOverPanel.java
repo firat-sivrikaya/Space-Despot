@@ -13,26 +13,31 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
+import space_despot.Application_Logic.HighscoresManager;
 import space_despot.Interfaces.MainMenuBackable;
 
 
 @SuppressWarnings("serial")
 public class GameOverPanel extends JPanel {
 	
-	private MainMenuBackable backToMainMenuDelegate;	
-
+	private MainMenuBackable backToMainMenuDelegate;
+	int finalScore;
+	HighscoresManager highscoresManager;
+	
 	// Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton confirmButton;
     private JButton exitButton;
     private JLabel infoLabel;
     private JTextField nicknameField;
     // End of variables declaration//GEN-END:variables
+    
 
 	// CONSTRUCTOR
     public GameOverPanel(int finalScore, MainMenuBackable backToMainMenuDelegate) { 	
-        
+        this.finalScore = finalScore;
         this.backToMainMenuDelegate = backToMainMenuDelegate;
-
+        highscoresManager = new HighscoresManager();
+        
         // construct components
         confirmButton = new JButton();        
         exitButton = new JButton();
@@ -96,6 +101,10 @@ public class GameOverPanel extends JPanel {
     public class ConfirmButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			// insert new score
+			highscoresManager.insertNewScore(nicknameField.getText(), finalScore);
+			
+			// back to main menu then
 			backToMainMenuDelegate.backToMainMenuAfterGameOver();		
 		}
     }

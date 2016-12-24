@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
@@ -18,6 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle;
+import javax.swing.table.DefaultTableModel;
+
+import space_despot.Application_Logic.HighscoreHolder;
+import space_despot.Application_Logic.HighscoresManager;
 
 
 @SuppressWarnings("serial")
@@ -29,12 +34,15 @@ public class ViewHighscoresScreen extends JPanel {
 	// PROPERTIES
     private JPanel contentPane;
     private BufferedImage backgroundImage;
+    private HighscoresManager highscoresManager;
+    private List<HighscoreHolder> highscores;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton backButton;
     private JTable table;
     private JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
+    
     
     // CONSTRUCTOR
     public ViewHighscoresScreen(JPanel contentPane) {
@@ -49,38 +57,33 @@ public class ViewHighscoresScreen extends JPanel {
 			e.printStackTrace();
 		} 
         
+        // set size
+        setPreferredSize(new Dimension(700, 700));
+        
         // construct components
         backButton = new JButton();
-
-        String[] columnNames = {"Nickname",
-                "Score"};
-        
-        Object[][] data = {
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	    {"Kathy", new Integer(5)},
-        	};
-
-        table = new JTable(data, columnNames);
-        table.setEnabled(false);
-        scrollPane = new JScrollPane(table);
-        table.setFillsViewportHeight(true);   
-        
-        setPreferredSize(new Dimension(700, 700));
-
         backButton.setOpaque(false);
         backButton.setContentAreaFilled(false);
         backButton.setBorderPainted(false);
         backButton.setFocusable(false);
         backButton.setIcon(backButtonIcon);
+        
+        // set table
+        String[] columnNames = {"Nickname",
+                "Score"};
+        
+        highscoresManager = new HighscoresManager();
+        highscores = highscoresManager.getHighscores();
+        Object[][] data = new Object[10][10];
 
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        table = new JTable(model);
+        table.setEnabled(false);
+        scrollPane = new JScrollPane(table);
+        table.setFillsViewportHeight(true);   
+        
+
+        // set layout
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,4 +127,13 @@ public class ViewHighscoresScreen extends JPanel {
 		}  	
     }
     
+    public void updateHighscores() {
+    	DefaultTableModel model = (DefaultTableModel)table.getModel();
+
+    	highscores = highscoresManager.getHighscores();
+    	for (int i = 0; i < 10; i++) {
+    		model.setValueAt(highscores.get(i).getNickname(), i, 0);
+    		model.setValueAt(highscores.get(i).getScore(), i, 1);	
+    	}  	
+    }   
 }
