@@ -24,6 +24,14 @@ public class Upgrade {
 		if (upgradeType == UpgradeType.MAX_HP) {
 			cost = Constants.MAX_HP_UPGRADE_COST;
 		}
+		else if(upgradeType == UpgradeType.ATTACK_DAMAGE)
+		{
+			cost = Constants.MAX_ATTACK_UPGRADE_COST;
+		}
+		else if(upgradeType == UpgradeType.MOVEMENT_SPEED)
+		{
+			cost = Constants.MAX_MOVEMENT_SPEED_COST;
+		}
 
 	}
 	
