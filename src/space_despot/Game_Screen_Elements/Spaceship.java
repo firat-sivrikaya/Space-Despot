@@ -8,7 +8,6 @@ import space_despot.Constants.Constants;
 import space_despot.Enums.Movement;
 import space_despot.Enums.SpaceshipType;
 import space_despot.Enums.UpgradeType;
-import space_despot.Interfaces.Soundable;
 import space_despot.Interfaces.TypeChangeable;
 import space_despot.Interfaces.Upgradeable;
 

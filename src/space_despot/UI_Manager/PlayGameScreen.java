@@ -3,7 +3,6 @@ package space_despot.UI_Manager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -158,11 +157,7 @@ GameStartable, GameOverMakable, MainMenuBackable, KeysChangeable, Soundable {
     	
     	// in the opening, spaceship type selection will be done
     	CardLayout cardLayout = (CardLayout) inGamePanel.getLayout();
-		cardLayout.show(inGamePanel, "Choose Spaceship Type Panel"); 
-		
-		
-		
-
+		cardLayout.show(inGamePanel, "Choose Spaceship Type Panel"); 	
     }	
     
     // METHODS

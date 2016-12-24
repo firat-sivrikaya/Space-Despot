@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import space_despot.Game_Screen_Elements.Boss;
 import space_despot.Game_Screen_Elements.Bullet;
 import space_despot.Game_Screen_Elements.SpaceItem;
 import space_despot.Game_Screen_Elements.SpaceMob;
