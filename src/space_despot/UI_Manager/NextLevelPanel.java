@@ -14,6 +14,7 @@ import space_despot.Application_Logic.MusicManager;
 import space_despot.Enums.UpgradeType;
 import space_despot.Game_Screen_Elements.Upgrade;
 import space_despot.Interfaces.LevelPassable;
+import space_despot.Interfaces.MainMenuBackable;
 import space_despot.Interfaces.Repaintable;
 import space_despot.Interfaces.UpgradableShip;
 
@@ -25,6 +26,7 @@ public class NextLevelPanel extends JPanel {
     private LevelPassable passLevelDelegate;
     private Repaintable repaintDelegate;
     private UpgradableShip upgradeDelegate;
+    private MainMenuBackable backToMainMenuDelegate;
     private MusicManager musicManager;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -41,17 +43,19 @@ public class NextLevelPanel extends JPanel {
 
     // CONSTRUCTOR
     public NextLevelPanel(LevelPassable passLevelDelegate, 
-    		Repaintable repaintDelegate, UpgradableShip upgradeDelegate, MusicManager musicManager) {
+    		Repaintable repaintDelegate, MainMenuBackable backToMainMenuDelegate, 
+    		UpgradableShip upgradeDelegate, MusicManager musicManager) {
         
         this.passLevelDelegate = passLevelDelegate;
-        this.upgradeDelegate = upgradeDelegate;
         this.repaintDelegate = repaintDelegate;
+        this.backToMainMenuDelegate  = backToMainMenuDelegate;
+        this.upgradeDelegate = upgradeDelegate;
         this.musicManager = musicManager;
         
         // construct components
               
         continueNextLevelButton = new JButton("Continue Next Level");    
-        exitButton = new JButton("Exit Game");
+        exitButton = new JButton("Exit");
 
         increaseMaxHPLabel = new JLabel("Increase Max HP");     
         increaseMaxHPButton = new JButton("+");      
@@ -126,6 +130,7 @@ public class NextLevelPanel extends JPanel {
         
         continueNextLevelButton.addActionListener(new ContinueNextLevelButtonListener());
         increaseMaxHPButton.addActionListener(new IncreaseMaxHPButtonListener());
+        exitButton.addActionListener(new ExitButtonListener());
         
     }
 
@@ -155,5 +160,12 @@ public class NextLevelPanel extends JPanel {
 			repaintDelegate.repaintRequest();
 			
 		}   	
+    }
+    
+    public class ExitButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			backToMainMenuDelegate.backToMainMenuAfterGameOver();
+		}
     }
 }
