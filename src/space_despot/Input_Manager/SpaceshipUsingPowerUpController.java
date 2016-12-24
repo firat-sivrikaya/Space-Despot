@@ -87,7 +87,8 @@ public class SpaceshipUsingPowerUpController {
 					        new java.util.TimerTask() {
 					            @Override
 					            public void run() {
-					            	spaceship.setImage(initialImage);									
+					            	spaceship.setImage(initialImage);	
+					            	spaceship.setInvulnerable(false);
 					            }
 					        }, 
 					        2000 

@@ -4,9 +4,12 @@ import java.awt.Rectangle;
 import java.util.Iterator;
 import java.util.List;
 
+import space_despot.Game_Screen_Elements.Asteroid;
+import space_despot.Game_Screen_Elements.Boss;
 import space_despot.Game_Screen_Elements.BossBullet;
 import space_despot.Game_Screen_Elements.Bullet;
 import space_despot.Game_Screen_Elements.Coin;
+import space_despot.Game_Screen_Elements.Creature;
 import space_despot.Game_Screen_Elements.CreatureBullet;
 import space_despot.Game_Screen_Elements.LaserBullet;
 import space_despot.Game_Screen_Elements.PowerUp;
@@ -113,14 +116,17 @@ public class CollisionCheckerAndHandler {
 		
 		while(spaceMobIterator.hasNext())
 		{
-			SpaceMob mob = spaceMobIterator.next();
-			Rectangle rectMob = mob.getBounds();
+			SpaceMob spaceMob = spaceMobIterator.next();
+			Rectangle rectMob = spaceMob.getBounds();
 			
 			if(rectSpaceship.intersects(rectMob) && !spaceship.isInvulnerable())
 			{
-				spaceship.setHP(spaceship.getHP() - mob.getAttackDamage());
-				mob.setHP(0);
-				spaceMobIterator.remove();
+				if (spaceMob instanceof Creature || spaceMob instanceof Asteroid) {
+					spaceMobIterator.remove();
+					spaceship.setHP(spaceship.getHP() - spaceMob.getAttackDamage());
+				} else if ( spaceMob instanceof Boss) {
+					spaceship.setHP(0);
+				}			
 			}
 		}
 	}

@@ -50,8 +50,8 @@ public class ViewSettingsScreen extends JPanel {
     private JLabel jLabel9;
     private JPanel jPanel1;
     private JPanel jPanel2;
-    private JSlider jSlider1;
-    private JSlider jSlider2;
+    private JSlider soundSlider;
+    private JSlider musicSlider;
     private JTabbedPane jTabbedPane1;
     private JComboBox<String> shootingKey;
     private JComboBox<String> usingPowerUpKey;
@@ -87,8 +87,8 @@ public class ViewSettingsScreen extends JPanel {
         jPanel2 = new JPanel();
         jLabel8 = new JLabel();
         jLabel9 = new JLabel();
-        jSlider1 = new JSlider();
-        jSlider2 = new JSlider();
+        soundSlider = new JSlider();
+        musicSlider = new JSlider();
         backButton = new JButton();
 
         jTabbedPane1.setFont(new Font("Tahoma", 0, 15)); // NOI18N
@@ -154,8 +154,8 @@ public class ViewSettingsScreen extends JPanel {
                     .addComponent(jLabel8))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(soundSlider, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(musicSlider, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
@@ -164,11 +164,11 @@ public class ViewSettingsScreen extends JPanel {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jSlider1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(soundSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jSlider2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(musicSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
@@ -207,8 +207,8 @@ public class ViewSettingsScreen extends JPanel {
         shootingKey.addItemListener(new ShootingKeyListener());
         usingPowerUpKey.addItemListener(new UsingPowerUpKeyListener());
         
-        jSlider1.addChangeListener(new FXListener());
-        jSlider2.addChangeListener(new BackgroundMusicListener());
+        soundSlider.addChangeListener(new FXListener());
+        musicSlider.addChangeListener(new BackgroundMusicListener());
         backButton.addActionListener(new BackToMainMenuButtonListener());
         
     }
