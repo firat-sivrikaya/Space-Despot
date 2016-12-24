@@ -1,3 +1,4 @@
+
 package space_despot.UI_Manager;
 
 import java.awt.Graphics;
@@ -15,8 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle;
 
+import space_despot.Interfaces.Helpable;
+import space_despot.Interfaces.HighScorable;
 import space_despot.Interfaces.MainMenuBackable;
 import space_despot.Interfaces.Pausable;
+import space_despot.Interfaces.Setable;
 
 
 @SuppressWarnings("serial")
@@ -31,6 +35,9 @@ public class PauseGamePanel extends JPanel {
     
     private Pausable pauseDelegate;
     private MainMenuBackable backToMainMenuDelegate;
+    private Setable settingsMenuDelegate;
+    private Helpable helpMenuDelegate;
+    private HighScorable highScoreMenuDelegate;
     
     private BufferedImage backgroundImage;
     
@@ -44,10 +51,13 @@ public class PauseGamePanel extends JPanel {
     // End of variables declaration//GEN-END:variables
     
     // CONSTRUCTOR
-    public PauseGamePanel(Pausable pauseDelegate, MainMenuBackable backToMainMenuDelegate) { 
+    public PauseGamePanel(Pausable pauseDelegate, MainMenuBackable backToMainMenuDelegate,Setable settingsMenuDelegate,Helpable helpMenuDelegate,HighScorable highScoreMenuDelegate) { 
         
         this.pauseDelegate = pauseDelegate;
         this.backToMainMenuDelegate = backToMainMenuDelegate;
+        this.settingsMenuDelegate = settingsMenuDelegate;
+        this.helpMenuDelegate = helpMenuDelegate;
+        this.highScoreMenuDelegate = highScoreMenuDelegate;
        
         // background
         try {
@@ -136,6 +146,10 @@ public class PauseGamePanel extends JPanel {
         
         backToGameButton.addActionListener(new BackToGameButtonListener());
         backToMainMenuButton.addActionListener(new BackToMainMenuButtonListener());
+        settingsButton.addActionListener(new SettingsButtonListener());
+        highscoresButton.addActionListener(new HighScoresButtonListener());
+        helpButton.addActionListener(new HelpButtonListener());
+        
     }
 
     @Override
@@ -159,4 +173,27 @@ public class PauseGamePanel extends JPanel {
 			backToMainMenuDelegate.backToMainMenuAfterGameOver();
 		}		
 	}
+     public class HighScoresButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {						
+			
+			highScoreMenuDelegate.showHighScoreMenu();
+		}		
+	}
+      public class SettingsButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {						
+			
+			settingsMenuDelegate.showSettingsMenu();
+		}		
+	}
+       public class HelpButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {						
+			// BACK TO MAIN MENU
+			helpMenuDelegate.showHelpMenu();
+		}		
+	}
+    
 }
+

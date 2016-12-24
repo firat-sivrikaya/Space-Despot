@@ -9,11 +9,11 @@ import space_despot.Enums.Movement;
 import space_despot.Enums.SpaceshipType;
 import space_despot.Enums.UpgradeType;
 import space_despot.Interfaces.TypeChangeable;
-import space_despot.Interfaces.Upgradeable;
+import space_despot.Interfaces.UpgradableShip;
 
 
 
-public class Spaceship extends SpaceObject implements Upgradeable, TypeChangeable {
+public class Spaceship extends SpaceObject implements UpgradableShip, TypeChangeable {
 
 	// Constants
     private final ImageIcon FIGHTER_ICON = new ImageIcon("resources/images/fighter.png");

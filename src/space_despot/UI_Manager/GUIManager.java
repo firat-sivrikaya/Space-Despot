@@ -17,6 +17,7 @@ public class GUIManager {
     private ViewSettingsScreen viewSettingsScreen;
     private ViewHighscoresScreen viewHighscoresScreen;
     private ViewHelpScreen viewHelpScreen;
+    //private ViewUpgradesScreen viewUpgradesScreen;
   
     private void displayGUI()
     {
@@ -38,9 +39,10 @@ public class GUIManager {
         
         contentPane.add(mainMenuScreen, "Main Menu Screen"); 
         contentPane.add(playGameScreen, "Game Screen");
-        contentPane.add(viewSettingsScreen, "Settings Screen");
-        contentPane.add(viewHighscoresScreen, "Highscores Screen");
+        contentPane.add(viewSettingsScreen, "View Settings Screen");
+        contentPane.add(viewHighscoresScreen, "View Highscores Screen");
         contentPane.add(viewHelpScreen, "View Help Screen");
+      //  contentPane.add(viewUpgradesScreen,"View Upgrades Screen");
         
         frame.setContentPane(contentPane);
 

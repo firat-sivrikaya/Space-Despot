@@ -135,7 +135,8 @@ public class MainMenuScreen extends JPanel {
         );
         
 
-        playGameButton.addActionListener(new PlayGameButtonListener());       
+        playGameButton.addActionListener(new PlayGameButtonListener()); 
+        upgradesButton.addActionListener(new UpgradesButtonListener());
         settingsButton.addActionListener(new ViewSettingsButtonListener());      
         highscoresButton.addActionListener(new ViewHighscoresButtonListener());
         helpButton.addActionListener(new ViewHelpButtonListener());
@@ -158,12 +159,19 @@ public class MainMenuScreen extends JPanel {
 			cardLayout.show(contentPane, "Game Screen");
 		}    	
     }
+	public class UpgradesButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			CardLayout cardLayout = (CardLayout) contentPane.getLayout();		
+			cardLayout.show(contentPane, "Upgrades Screen");
+		}    	
+    }
     
     public class ViewSettingsButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			CardLayout cardLayout = (CardLayout) contentPane.getLayout();	
-			cardLayout.show(contentPane, "Settings Screen");
+			cardLayout.show(contentPane, "View Settings Screen");
 		}    	
     }
     
@@ -172,7 +180,7 @@ public class MainMenuScreen extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			((ViewHighscoresScreen) contentPane.getComponent(3)).updateHighscores();
 			CardLayout cardLayout = (CardLayout) contentPane.getLayout();	
-			cardLayout.show(contentPane, "Highscores Screen");
+			cardLayout.show(contentPane, "View Highscores Screen");
 		}    	
     }
     
