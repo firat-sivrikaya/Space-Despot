@@ -165,12 +165,7 @@ public class NextLevelPanel extends JPanel {
 		}   	
     }
 
-    public class ExitButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			backToMainMenuDelegate.backToMainMenuAfterGameOver();
-		}
-    }
+
 
     public class IncreaseAttackDamageButtonListener implements ActionListener{
     	@Override
@@ -178,6 +173,8 @@ public class NextLevelPanel extends JPanel {
     		// set upgrade and do it for spaceship
 			Upgrade upgrade = new Upgrade(UpgradeType.ATTACK_DAMAGE);
 			upgradeDelegate.doUpgradeWithCoins(upgrade);
+			// do sound
+			musicManager.playUpgradeSound();
 			// repaint for updates (coin, maxHP etc)
 			repaintDelegate.repaintRequest();
 			
@@ -190,10 +187,19 @@ public class NextLevelPanel extends JPanel {
     		// set upgrade and do it for spaceship
 			Upgrade upgrade = new Upgrade(UpgradeType.MOVEMENT_SPEED);
 			upgradeDelegate.doUpgradeWithCoins(upgrade);
+			// do sound
+			musicManager.playUpgradeSound();
 			// repaint for updates (coin, maxHP etc)
 			repaintDelegate.repaintRequest();
 			
 		}   	
+    }
+    
+    public class ExitButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			backToMainMenuDelegate.backToMainMenuAfterGameOver();
+		}
     }
 
 }
