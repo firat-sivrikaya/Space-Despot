@@ -1,5 +1,6 @@
 package space_despot.Game_Screen_Elements;
 
+import java.awt.Image;
 import java.util.HashSet;
 
 import javax.swing.ImageIcon;
@@ -28,6 +29,7 @@ public class Spaceship extends SpaceObject implements UpgradableShip, TypeChange
     private int HP;
     private int attackDamage;
 	private boolean isBulletReady;
+	private boolean isInvulnerable;
 	private HashSet<Movement> movements;
 	private PowerUp currentPowerUp;
 	private int coin;
@@ -46,6 +48,7 @@ public class Spaceship extends SpaceObject implements UpgradableShip, TypeChange
 		velocityX = Constants.FIGHTER_VELOCITY;
 		velocityY = Constants.FIGHTER_VELOCITY;
 		isBulletReady = true;
+		isInvulnerable = false;
 		movements = new HashSet<Movement>(); // no left or right initially
 		currentPowerUp = null; // initially
 		coin = 0; // initially
@@ -263,5 +266,13 @@ public class Spaceship extends SpaceObject implements UpgradableShip, TypeChange
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public boolean isInvulnerable() {
+		return isInvulnerable;
+	}
+
+	public void setInvulnerable(boolean isInvulnerable) {
+		this.isInvulnerable = isInvulnerable;
 	}
 }

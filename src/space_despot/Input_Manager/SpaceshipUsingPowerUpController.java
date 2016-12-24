@@ -1,12 +1,14 @@
 package space_despot.Input_Manager;
 
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.KeyStroke;
 
@@ -18,6 +20,9 @@ import space_despot.Game_Screen_Elements.Spaceship;
 
 public class SpaceshipUsingPowerUpController {
 
+	// Constants
+    private final ImageIcon INVULNERABLE_ICON = new ImageIcon("resources/images/invulnerable.png");
+    
 	// PROPERTIES
 	private Spaceship spaceship;
 	private List<Bullet> bulletsInSpace;
@@ -74,7 +79,19 @@ public class SpaceshipUsingPowerUpController {
 					        2000 
 					);
 				} else { // invulnerability
-					
+					spaceship.setInvulnerable(true);
+					Image initialImage = spaceship.getImage();				
+					spaceship.setImage(INVULNERABLE_ICON.getImage());
+					// revert after two seconds
+					new java.util.Timer().schedule( 
+					        new java.util.TimerTask() {
+					            @Override
+					            public void run() {
+					            	spaceship.setImage(initialImage);									
+					            }
+					        }, 
+					        2000 
+					);
 				}
 			}
 			

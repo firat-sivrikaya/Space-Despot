@@ -66,7 +66,7 @@ public class CollisionCheckerAndHandler {
 			// incoming bullets from space mobs to the spaceship
 			if (bullet instanceof CreatureBullet || bullet instanceof BossBullet) {
 				Rectangle rectBullet = bullet.getBounds();  
-				if (rectBullet.intersects(rectSpaceship)) {						
+				if (rectBullet.intersects(rectSpaceship) && !spaceship.isInvulnerable()) {						
 					spaceship.setHP(spaceship.getHP() - bullet.getAttackDamage());
 					bulletIterator.remove();
                 }						
@@ -116,7 +116,7 @@ public class CollisionCheckerAndHandler {
 			SpaceMob mob = spaceMobIterator.next();
 			Rectangle rectMob = mob.getBounds();
 			
-			if(rectSpaceship.intersects(rectMob))
+			if(rectSpaceship.intersects(rectMob) && !spaceship.isInvulnerable())
 			{
 				spaceship.setHP(spaceship.getHP() - mob.getAttackDamage());
 				mob.setHP(0);
