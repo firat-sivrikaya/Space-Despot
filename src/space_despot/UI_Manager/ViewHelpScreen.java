@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
  *
  * @author Nylandre
  */
+@SuppressWarnings("serial")
 public class ViewHelpScreen extends javax.swing.JPanel {
 
     /**
