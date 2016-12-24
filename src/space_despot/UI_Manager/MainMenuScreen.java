@@ -20,7 +20,6 @@ public class MainMenuScreen extends JPanel {
 	
 	// Constants
     private final ImageIcon playGameButtonIcon = new ImageIcon("resources/images/play-game-button.png");
-    private final ImageIcon upgradesButtonIcon = new ImageIcon("resources/images/upgrades-button.png");
     private final ImageIcon highscoresButtonIcon = new ImageIcon("resources/images/highscores-button.png");
     private final ImageIcon settingsButtonIcon = new ImageIcon("resources/images/settings-button.png");
     private final ImageIcon helpButtonIcon = new ImageIcon("resources/images/help-button.png");
@@ -31,7 +30,6 @@ public class MainMenuScreen extends JPanel {
     private BufferedImage backgroundImage;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton upgradesButton;
     private JButton settingsButton;
     private JButton exitButton;
     private JButton playGameButton;
@@ -55,7 +53,6 @@ public class MainMenuScreen extends JPanel {
 		} 
         
         // construct components
-        upgradesButton = new JButton();
         settingsButton = new JButton();
         exitButton = new JButton();
         playGameButton = new JButton();
@@ -67,12 +64,6 @@ public class MainMenuScreen extends JPanel {
         playGameButton.setBorderPainted(false);
         playGameButton.setFocusable(false);
         playGameButton.setIcon(playGameButtonIcon);
-        
-        upgradesButton.setOpaque(false);
-        upgradesButton.setContentAreaFilled(false);
-        upgradesButton.setBorderPainted(false);
-        upgradesButton.setFocusable(false);
-        upgradesButton.setIcon(upgradesButtonIcon);
         
         highscoresButton.setOpaque(false);
         highscoresButton.setContentAreaFilled(false);
@@ -108,8 +99,7 @@ public class MainMenuScreen extends JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(225, 225, 225)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(settingsButton, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(upgradesButton, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(settingsButton, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)                           
                             .addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
                             .addComponent(playGameButton, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
                             .addComponent(helpButton, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
@@ -121,8 +111,6 @@ public class MainMenuScreen extends JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(320, 320, 320)
                 .addComponent(playGameButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(upgradesButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(highscoresButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -136,7 +124,6 @@ public class MainMenuScreen extends JPanel {
         
 
         playGameButton.addActionListener(new PlayGameButtonListener()); 
-        upgradesButton.addActionListener(new UpgradesButtonListener());
         settingsButton.addActionListener(new ViewSettingsButtonListener());      
         highscoresButton.addActionListener(new ViewHighscoresButtonListener());
         helpButton.addActionListener(new ViewHelpButtonListener());
@@ -157,13 +144,6 @@ public class MainMenuScreen extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			CardLayout cardLayout = (CardLayout) contentPane.getLayout();		
 			cardLayout.show(contentPane, "Game Screen");
-		}    	
-    }
-	public class UpgradesButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			CardLayout cardLayout = (CardLayout) contentPane.getLayout();		
-			cardLayout.show(contentPane, "Upgrades Screen");
 		}    	
     }
     

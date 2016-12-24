@@ -22,7 +22,7 @@ public class GUIManager {
     private ViewHighscoresScreen viewHighscoresScreen;
     private ViewHelpScreen viewHelpScreen;
     private BufferedImage icon;
-    //private ViewUpgradesScreen viewUpgradesScreen;
+
   
     private void displayGUI()
     {
@@ -54,8 +54,7 @@ public class GUIManager {
         contentPane.add(viewSettingsScreen, "View Settings Screen");
         contentPane.add(viewHighscoresScreen, "View Highscores Screen");
         contentPane.add(viewHelpScreen, "View Help Screen");
-      //  contentPane.add(viewUpgradesScreen,"View Upgrades Screen");
-        
+
         frame.setContentPane(contentPane);
 
         
