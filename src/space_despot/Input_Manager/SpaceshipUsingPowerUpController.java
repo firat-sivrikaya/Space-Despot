@@ -58,6 +58,23 @@ public class SpaceshipUsingPowerUpController {
 					bulletsInSpace.add(spaceship.shootNewLaserBullet());
 				} else if (temp.getType() == PowerUpType.REPAIR) {
 					spaceship.setHP(spaceship.getMaxHP());
+				} else if (temp.getType() == PowerUpType.HYPER_DRIVE) {
+					int initialVelocity = spaceship.getVelocityX();					
+					spaceship.setVelocityX(initialVelocity + 1);
+					spaceship.setVelocityY(initialVelocity + 1); 					
+					// revert after two seconds
+					new java.util.Timer().schedule( 
+					        new java.util.TimerTask() {
+					            @Override
+					            public void run() {
+					            	spaceship.setVelocityX(initialVelocity);
+									spaceship.setVelocityY(initialVelocity); 
+					            }
+					        }, 
+					        2000 
+					);
+				} else { // invulnerability
+					
 				}
 			}
 			
