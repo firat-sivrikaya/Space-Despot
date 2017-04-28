@@ -1,4 +1,4 @@
-#Space Despot
+# Space Despot
 CS319 Object Oriented Programming Project - Group 19
 
  Space Despot is an arcade game in which player controls a spaceship that moves upwards in a space through different levels. Player’s goal will be passing these levels one by one similar to the other space arcade games such as [Asteroids](https://en.wikipedia.org/wiki/Asteroids_(video_game)) and [Space Impact](https://en.wikipedia.org/wiki/Space_Impact). 
@@ -7,7 +7,7 @@ CS319 Object Oriented Programming Project - Group 19
  
  Player will try to pass as much level as possible. However, if spaceship’s health drops to zero, the game will be over.
 
-##Group 19 Members:
+## Group 19 Members:
   * Cihangir Mercan - 21301813
   * Çağdaş Han Yılmaz - 21401403
   * Gökçe Şakir Özyurt - 21402024
