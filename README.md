@@ -6,6 +6,9 @@ CS319 Object Oriented Programming Project - Group 19
  In the space, there will be various obstacles that might crash into spaceship and do damage. Also, spaceship will be able to shoot these obstacles and these obstacles may drop power-ups or coins. Power-ups will make spaceship more powerful by giving it various specialties. Coins will help player to do upgrades for the spaceship at the end of each level. These upgrades can improve spaceship’s attributes.
  
  Player will try to pass as much level as possible. However, if spaceship’s health drops to zero, the game will be over.
+ 
+## Current State
+The game is complete in terms of functionalities; however, there are still some missing graphics in one of the screens. Normally, highscores are stored globally, so everyone can save their highscores to global database and display top 10 list. We have not serialized database credentials; thus, for security reasons, highscores are disabled in the public version.
 
 ## Group 19 Members:
   * Cihangir Mercan - 21301813
