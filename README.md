@@ -9,10 +9,6 @@
 ## Current State
 The game is complete in terms of functionalities; however, there are still some missing graphics in one of the screens. Normally, highscores are stored globally, so everyone can save their highscores to global database and display top 10 list. We have not serialized database credentials; thus, for security reasons, highscores are disabled in the public version.
 
-## Achievements
-
-Space Despot has received 85/100 points and took the 1st place in the course project ranking.
-
 ## Contributors (in alphabetical order):
   * Cihangir Mercan
   * Çağdaş Han Yılmaz
